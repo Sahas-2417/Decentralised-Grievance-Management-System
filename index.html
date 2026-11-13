@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grievance Portal | Blockchain</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.4/ethers.umd.min.js"></script>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span>G</span>
+                <div>
+                    <h2>Grievance</h2>
+                    <small>BLOCKCHAIN PORTAL</small>
+                </div>
+            </div>
+
+            <p class="menu-title">MAIN MENU</p>
+
+            <nav>
+                <button class="nav-item active" data-page="dashboard">Dashboard</button>
+                <button class="nav-item" data-page="submit">Submit Complaint</button>
+                <button class="nav-item" data-page="myComplaints">My Complaints</button>
+                <button class="nav-item" data-page="track">Track Complaint</button>
+                <button class="nav-item" data-page="admin">Admin Panel</button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span class="online-dot"></span>
+                Sepolia Testnet
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+
+            <header class="topbar">
+                <div>
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p>Decentralised Complaint Management System</p>
+                </div>
+
+                <button id="connectWallet" class="wallet-btn">
+                    Connect Wallet
+                </button>
+            </header>
+
+            <div id="walletInfo" class="wallet-info">
+                Wallet not connected
+            </div>
+
+            <!-- Dashboard -->
+            <section id="dashboard" class="page active">
+
+                <div class="welcome">
+                    <h2>Welcome to Grievance Portal</h2>
+                    <p>Submit, manage and track complaints transparently using blockchain technology.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <p>Total Complaints</p>
+                        <h2 id="totalCount">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Pending Complaints</p>
+                        <h2 id="pendingCount">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Resolved Complaints</p>
+                        <h2 id="resolvedCount">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Rejected Complaints</p>
+                        <h2 id="rejectedCount">0</h2>
+                    </div>
+
+                </div>
+
+                <div class="content-card">
+                    <h3>About the Portal</h3>
+                    <p>
+                        This platform uses Ethereum blockchain technology to
+                        maintain transparent complaint records. Users can submit
+                        complaints and track their progress, while authorised
+                        administrators can update complaint statuses.
+                    </p>
+                </div>
+
+            </section>
+
+            <!-- Submit Complaint -->
+            <section id="submit" class="page">
+
+                <div class="content-card">
+                    <h2>Submit a Complaint</h2>
+                    <p>Fill in the details below to register your complaint.</p>
+
+                    <form id="complaintForm">
+
+                        <label>Complaint Title</label>
+                        <input type="text" id="complaintTitle"
+                               placeholder="Enter complaint title" required>
+
+                        <label>Complaint Description</label>
+                        <textarea id="complaintDescription"
+                                  placeholder="Describe your complaint"
+                                  rows="5" required></textarea>
+
+                        <button type="submit" class="primary-btn">
+                            Submit Complaint
+                        </button>
+
+                    </form>
+                </div>
+
+            </section>
+
+            <!-- My Complaints -->
+            <section id="myComplaints" class="page">
+
+                <div class="content-card">
+                    <h2>My Complaints</h2>
+                    <p>View all complaints submitted from your wallet.</p>
+
+                    <div id="myComplaintsList" class="complaint-list">
+                        Connect your wallet to view complaints.
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Track Complaint -->
+            <section id="track" class="page">
+
+                <div class="content-card">
+                    <h2>Track Complaint</h2>
+                    <p>Enter your complaint ID to check its status.</p>
+
+                    <div class="search-box">
+                        <input type="number" id="trackId"
+                               placeholder="Enter Complaint ID">
+                        <button id="trackBtn" class="primary-btn">
+                            Track
+                        </button>
+                    </div>
+
+                    <div id="trackResult"></div>
+                </div>
+
+            </section>
+
+            <!-- Admin Panel -->
+            <section id="admin" class="page">
+
+                <div class="content-card">
+                    <h2>Administrator Panel</h2>
+                    <p>Manage complaints and update their status.</p>
+
+                    <div id="adminMessage">
+                        Connect the administrator wallet to access this panel.
+                    </div>
+
+                    <div id="adminComplaints"></div>
+
+                </div>
+
+            </section>
+
+            <footer>
+                Decentralised Grievance Management System | Ethereum Sepolia
+            </footer>
+
+        </main>
+
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
